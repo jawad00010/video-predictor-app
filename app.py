@@ -29,15 +29,12 @@ if submitted:
 
     with st.spinner("Analyzing with GPT..."):
         from openai import OpenAI
-
         client = OpenAI(api_key=st.secrets["openai_api_key"])
-
         response = client.chat.completions.create(
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}]
 )
 
-    result = response.choices[0].message.content
-
+        result = response.choices[0].message.content
         st.markdown("### 📊 GPT Prediction Result")
         st.write(result)
